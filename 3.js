@@ -1,14 +1,15 @@
-function amounttocoin(amount, coin) {
+function amountToCoin(amount, coin) {
   if (amount === 0) {
     return [];
   } else {
     if (amount >= coin[0]) {
-      rest = amout - coin[0];
-      return concat(amunttocoin(rest, coin));
+      const rest = amount - coin[0];
+      return [coin[0]].concat(amountToCoin(rest, coin));
     } else {
       coin.shift();
-      return amounttocoin(rest, coin);
+      return amountToCoin(amount, coin);
     }
   }
 }
-console.log(amounttocoin(50, [5, 4, 3, 2, 1]));
+
+console.log(amountToCoin(50, [5, 4, 3, 2, 1]));
